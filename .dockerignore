@@ -1,0 +1,19 @@
+# Composer Dependencies
+./vendor/
+
+# Node Dependencies
+node_modules/
+
+# env files
+*.env
+
+# Git folders and files
+.git/
+.gitignore
+.gitattributes
+
+#
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
