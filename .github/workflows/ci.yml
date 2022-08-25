@@ -3,7 +3,11 @@ name: continuous integration
 on:
   push:
     branches:
-      - "feature/*"
+      - "dev"
+
+  pull_request:
+    branches:
+      - "release"
 
 jobs:
   
