@@ -25,8 +25,6 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 WORKDIR /var/www/html/
 # Get latest Composer
 
-COPY ./server/vhost.conf /etc/apache2/sites-available/000-default.conf
-
 COPY --from=builder /app /var/www/html/
 
 COPY --from=builder /usr/bin/composer /usr/bin/composer
@@ -41,8 +39,7 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user && \
     chown -R $user:$user /var/www/html/ && \
     cp .env.example .env && \
     php artisan key:generate && \
-    php artisan config:cache && \
-    a2enmod rewrite headers
+    php artisan config:cache
 
 USER $user
 
