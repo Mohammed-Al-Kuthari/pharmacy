@@ -8,7 +8,7 @@ COPY . .
 RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
 
 # Run stage
-FROM php:8.1-apache-buster AS production
+FROM php:8.1-buster AS production
 # Install system dependencies and clear cache
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
@@ -47,3 +47,5 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user && \
 USER $user
 
 EXPOSE 80
+
+CMD [ "php", "artisan", "serve", "--port=80" ]
