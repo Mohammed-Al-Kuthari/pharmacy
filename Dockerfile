@@ -42,7 +42,7 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user && \
     php artisan config:cache
 
 USER $user
-
+ENV PORT 80
 # EXPOSE 80
 
-CMD [ "php", "artisan", "serve", "--port=80", "--host=0.0.0.0" ]
+CMD [ "php", "artisan", "serve", "--port=${PORT}", "--host=0.0.0.0" ]
