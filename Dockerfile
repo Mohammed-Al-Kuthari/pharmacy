@@ -44,6 +44,6 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user && \
 USER $user
 
 ENV PORT 80
-EXPOSE 80
+# EXPOSE 80
 
 CMD [ "php", "artisan", "serve", "--port=${PORT}", "--host=0.0.0.0" ]
